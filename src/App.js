@@ -46,7 +46,7 @@ class App extends React.Component {
 
 
   onChange = ({ target: { value } }) => {
-    const tweet = value;
+    const tweet = value.replace(/[\r\n\t\v]/g,'');
     this.setState({ tweet });
   };
 

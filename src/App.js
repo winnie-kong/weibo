@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input, Row, Button, Tooltip } from 'antd';
+import {Input, Row, Button, Tooltip, Col } from 'antd';
 
 import './App.css';
 import tx01 from './tx01.svg';
@@ -46,7 +46,7 @@ class App extends React.Component {
 
 
   onChange = ({ target: { value } }) => {
-    const tweet = value.replace(/[\r\n\t\v]/g,'');
+    const tweet = value.replace(/[\r\n\t]/g,'');
     this.setState({ tweet });
   };
 
@@ -102,18 +102,15 @@ class App extends React.Component {
         </Row>
         {
           tweets.map(tweet => (
-            <div className="App-l" key={tweet.timestamp} >
-              <img src={tweet.avatar} className="App-t" alt="头像" />
-              <div className="App-k">
-              <h3>{tweet.username}</h3>
-              <p>{tweet.tweet}</p>
-              <Tooltip title={dayjs(tweet.timestamp*1000).format('YYYY-MM-DD HH:mm:ss')}>
+          <Row gutter={[8, 32]} type="flex" align="top" justify="start" key={tweet.timestamp}>
+            <Col span={2}> <img src={tweet.avatar} className="App-t" alt="头像" /></Col>
+            <Col span={22} style={{ borderBottom: 'thin solid #e9e9e9',marginBottom:32 }}><h3>{tweet.username}</h3><p>{tweet.tweet}</p>
+              <Tooltip title={dayjs(tweet.timestamp*1000).format('YYYY-MM-DD HHs:mm:ss')}>
                 <span>{dayjs().to(tweet.timestamp*1000)}</span>
-              </Tooltip>
-              </div>
-            </div>
-          )
-            )
+              </Tooltip>    
+            </Col> 
+          </Row> 
+          ))
         }
       </div>
     );

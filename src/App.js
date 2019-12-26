@@ -102,7 +102,7 @@ class App extends React.Component {
         </Row>
         {
           tweets.map(tweet => (
-          <Row gutter={[8, 32]} type="flex" align="top" justify="start" key={tweet.timestamp}>
+          <Row gutter={[8, 34]} type="flex" align="top" justify="start" key={tweet.timestamp}>
             <Col span={2}> <img src={tweet.avatar} className="App-t" alt="头像" /></Col>
             <Col span={22} style={{ borderBottom: 'thin solid #e9e9e9',marginBottom:32 }}><h3>{tweet.username}</h3><p>{tweet.tweet}</p>
               <Tooltip title={dayjs(tweet.timestamp*1000).format('YYYY-MM-DD HHs:mm:ss')}>
